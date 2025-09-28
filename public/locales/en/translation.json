@@ -1,0 +1,24 @@
+{
+  "systemConfigurations": {
+    "title": "System Configurations",
+    "dateAndTime": "Date & Time",
+    "notificationSetup": "Notification Setup",
+    "printFormatDesigner": "Print Format Designer",
+    "languageSettings": "Language Settings",
+    "messageTemplates": "Message Templates",
+    "dateFormat": "Date Format",
+    "timeFormat": "Time Format",
+    "timezone": "Timezone",
+    "language": "Language",
+    "preview": "Preview",
+    "currentDate": "Current Date",
+    "currentTime": "Current Time",
+    "dateFormatDescription": "Choose how dates are displayed throughout the application",
+    "timeFormatDescription": "Choose between 12-hour and 24-hour time display",
+    "timezoneDescription": "Set your preferred timezone for date and time display",
+    "languageDescription": "Choose your preferred language for the application interface",
+    "previewDescription": "See how your settings will look",
+    "note": "Note:",
+    "settingsNote": "These settings will apply to all dates displayed throughout the application, including tables, forms, and other components. Changes take effect immediately."
+  }
+}

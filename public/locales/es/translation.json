@@ -1,0 +1,24 @@
+{
+  "systemConfigurations": {
+    "title": "Configuraciones del Sistema",
+    "dateAndTime": "Fecha y Hora",
+    "notificationSetup": "Configuración de Notificaciones",
+    "printFormatDesigner": "Diseñador de Formato de Impresión",
+    "languageSettings": "Configuración de Idioma",
+    "messageTemplates": "Plantillas de Mensajes",
+    "dateFormat": "Formato de Fecha",
+    "timeFormat": "Formato de Hora",
+    "timezone": "Zona Horaria",
+    "language": "Idioma",
+    "preview": "Vista Previa",
+    "currentDate": "Fecha Actual",
+    "currentTime": "Hora Actual",
+    "dateFormatDescription": "Elija cómo se muestran las fechas en toda la aplicación",
+    "timeFormatDescription": "Elija entre formato de 12 horas y 24 horas",
+    "timezoneDescription": "Establezca su zona horaria preferida para la visualización de fecha y hora",
+    "languageDescription": "Elija su idioma preferido para la interfaz de la aplicación",
+    "previewDescription": "Vea cómo se verán sus configuraciones",
+    "note": "Nota:",
+    "settingsNote": "Estas configuraciones se aplicarán a todas las fechas mostradas en toda la aplicación, incluyendo tablas, formularios y otros componentes. Los cambios surten efecto inmediatamente."
+  }
+}
