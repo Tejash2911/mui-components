@@ -20,6 +20,7 @@ import { FormattedDate, ThemeToggleButton } from '@/components'
 import { menuItems } from '@/layouts/updatedMenu'
 import WorkSpaceBar from '@/layouts/workspace-bar'
 import { convertDateToTimestamp } from '@/utils/dateFunctions'
+import { useTranslation } from 'react-i18next'
 
 const drawerWidth = 250
 
@@ -79,6 +80,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: prop => prop !== 'open' })
 
 // Recursive component for nested menu items
 const NestedMenuItem = ({ item, open }: { item: any; open: boolean }) => {
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
   const hasChildren = item.subItems && item.subItems.length > 0
@@ -115,7 +117,7 @@ const NestedMenuItem = ({ item, open }: { item: any; open: boolean }) => {
           {item.icon}
         </ListItemIcon>
         <ListItemText
-          primary={item.text}
+          primary={item.i18nKey ? t(item.i18nKey) : item.text}
           sx={{ opacity: open ? 1 : 0, '& .MuiTypography-root': { fontSize: '0.75rem', lineHeight: 1 } }}
         />
         {open && hasChildren && (isOpen ? <Icon icon='ri:arrow-up-s-line' /> : <Icon icon='ri:arrow-down-s-line' />)}
