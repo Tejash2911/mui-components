@@ -1,9 +1,10 @@
-import { Box, Card, CardContent, Grid, Stack, Typography } from '@mui/material'
+import { Box, Grid, Stack, Typography } from '@mui/material'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FormProvider, useForm } from 'react-hook-form'
 import {
   AutoCompleteAvatarControl,
   CommonButton,
+  CommonCard,
   CreateAbleAutoCompleteControl,
   EditorControl,
   InputControl,
@@ -150,13 +151,11 @@ const FormComponents = () => {
           </Box>
         </Stack>
       </Box>
-      <Card sx={{ mt: 2 }}>
-        <CardContent>
-          <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
-            {JSON.stringify(watch(), null, 2)}
-          </pre>
-        </CardContent>
-      </Card>
+      <CommonCard>
+        <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+          {JSON.stringify(watch(), null, 2)}
+        </pre>
+      </CommonCard>
     </FormProvider>
   )
 }

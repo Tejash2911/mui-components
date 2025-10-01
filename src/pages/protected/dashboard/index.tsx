@@ -4,7 +4,6 @@ import {
   Email as EmailIcon,
   Event as EventIcon,
   AttachMoney as MoneyIcon,
-  MoreVert as MoreVertIcon,
   People as PeopleIcon,
   Person as PersonIcon,
   TrendingUp as TrendingUpIcon
@@ -12,11 +11,8 @@ import {
 import {
   Avatar,
   Box,
-  Card,
-  CardContent,
   Divider,
   Grid,
-  IconButton,
   List,
   ListItem,
   ListItemIcon,
@@ -25,6 +21,7 @@ import {
   Typography,
   useTheme
 } from '@mui/material'
+import { CommonCard } from '@/components'
 
 interface StatCardProps {
   title: string
@@ -34,19 +31,17 @@ interface StatCardProps {
 }
 
 const StatCard: FC<StatCardProps> = ({ title, value, icon, color }) => (
-  <Card sx={{ height: '100%' }}>
-    <CardContent>
-      <Stack direction='row' alignItems='center' spacing={2}>
-        <Avatar sx={{ bgcolor: `${color}20`, color: color }}>{icon}</Avatar>
-        <Box>
-          <Typography variant='h6' color='textSecondary'>
-            {title}
-          </Typography>
-          <Typography variant='h5'>{value}</Typography>
-        </Box>
-      </Stack>
-    </CardContent>
-  </Card>
+  <CommonCard>
+    <Stack direction='row' alignItems='center' spacing={2}>
+      <Avatar sx={{ bgcolor: `${color}20`, color: color }}>{icon}</Avatar>
+      <Box>
+        <Typography variant='h6' color='textSecondary'>
+          {title}
+        </Typography>
+        <Typography variant='h5'>{value}</Typography>
+      </Box>
+    </Stack>
+  </CommonCard>
 )
 
 interface ActivityItemProps {
@@ -121,106 +116,83 @@ const Dashboard: FC = () => {
         {/* Main Content */}
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
           {/* Revenue Card */}
-          <Card>
-            <CardContent>
-              <Stack direction='row' justifyContent='space-between' alignItems='center' mb={2}>
-                <Typography variant='h6'>Revenue Overview</Typography>
-                <IconButton size='small'>
-                  <MoreVertIcon />
-                </IconButton>
-              </Stack>
-              <Box sx={{ height: 236, backgroundColor: theme.palette.grey[100], borderRadius: 1 }}>
-                <Box display='flex' justifyContent='center' alignItems='center' height='100%'>
-                  <Typography color='textSecondary'>Revenue chart will be displayed here</Typography>
-                </Box>
+          <CommonCard title='Revenue Overview'>
+            <Box sx={{ height: 236, backgroundColor: theme.palette.grey[100], borderRadius: 1 }}>
+              <Box display='flex' justifyContent='center' alignItems='center' height='100%'>
+                <Typography color='textSecondary'>Revenue chart will be displayed here</Typography>
               </Box>
-            </CardContent>
-          </Card>
+            </Box>
+          </CommonCard>
           {/* System Status */}
-          <Card>
-            <CardContent>
-              <Typography variant='h6' mb={2}>
-                System Status
-              </Typography>
-              <Stack spacing={2}>
-                {systemStatus.map((item, index) => (
-                  <Box key={index}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
-                      <Typography variant='body2'>{item.label}</Typography>
-                      <Typography variant='body2'>{item.value}%</Typography>
-                    </Box>
-                    <Box sx={{ height: 8, bgcolor: 'divider', borderRadius: 4, overflow: 'hidden' }}>
-                      <Box
-                        sx={{ width: `${item.value}%`, height: '100%', bgcolor: `${item.color}.main`, borderRadius: 4 }}
-                      />
-                    </Box>
+          <CommonCard title='System Status'>
+            <Stack spacing={2}>
+              {systemStatus.map((item, index) => (
+                <Box key={index}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                    <Typography variant='body2'>{item.label}</Typography>
+                    <Typography variant='body2'>{item.value}%</Typography>
                   </Box>
-                ))}
-              </Stack>
-            </CardContent>
-          </Card>
+                  <Box sx={{ height: 8, bgcolor: 'divider', borderRadius: 4, overflow: 'hidden' }}>
+                    <Box
+                      sx={{ width: `${item.value}%`, height: '100%', bgcolor: `${item.color}.main`, borderRadius: 4 }}
+                    />
+                  </Box>
+                </Box>
+              ))}
+            </Stack>
+          </CommonCard>
         </Box>
 
         {/* Sidebar */}
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
           {/* Quick Actions */}
-          <Card>
-            <CardContent>
-              <Typography variant='h6' mb={2}>
-                Quick Actions
-              </Typography>
-              <Grid container spacing={1}>
-                {quickActions.map((action, index) => (
-                  <Grid size={{ xs: 6, sm: 3 }} key={index}>
-                    <Box
+          <CommonCard title='Quick Actions'>
+            <Grid container spacing={1}>
+              {quickActions.map((action, index) => (
+                <Grid size={{ xs: 6, sm: 3 }} key={index}>
+                  <Box
+                    sx={{
+                      p: 2,
+                      textAlign: 'center',
+                      borderRadius: 1,
+                      cursor: 'pointer',
+                      '&:hover': {
+                        backgroundColor: 'action.hover',
+                        transform: 'translateY(-2px)',
+                        transition: 'all 0.2s ease-in-out'
+                      }
+                    }}
+                  >
+                    <Avatar
                       sx={{
-                        p: 2,
-                        textAlign: 'center',
-                        borderRadius: 1,
-                        cursor: 'pointer',
-                        '&:hover': {
-                          backgroundColor: 'action.hover',
-                          transform: 'translateY(-2px)',
-                          transition: 'all 0.2s ease-in-out'
-                        }
+                        bgcolor: `${action.color}.light`,
+                        color: `${action.color}.dark`,
+                        width: 36,
+                        height: 36,
+                        mx: 'auto',
+                        mb: 1
                       }}
                     >
-                      <Avatar
-                        sx={{
-                          bgcolor: `${action.color}.light`,
-                          color: `${action.color}.dark`,
-                          width: 36,
-                          height: 36,
-                          mx: 'auto',
-                          mb: 1
-                        }}
-                      >
-                        {action.icon}
-                      </Avatar>
-                      <Typography variant='body2'>{action.label}</Typography>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            </CardContent>
-          </Card>
+                      {action.icon}
+                    </Avatar>
+                    <Typography variant='body2'>{action.label}</Typography>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </CommonCard>
 
           {/* Recent Activities */}
-          <Card>
-            <CardContent>
-              <Typography variant='h6' mb={2}>
-                Recent Activities
-              </Typography>
-              <List disablePadding>
-                {activities.map((activity, index) => (
-                  <Box key={index}>
-                    <ActivityItem {...activity} />
-                    {index < activities.length - 1 && <Divider variant='inset' component='li' />}
-                  </Box>
-                ))}
-              </List>
-            </CardContent>
-          </Card>
+          <CommonCard title='Recent Activities'>
+            <List disablePadding>
+              {activities.map((activity, index) => (
+                <Box key={index}>
+                  <ActivityItem {...activity} />
+                  {index < activities.length - 1 && <Divider variant='inset' component='li' />}
+                </Box>
+              ))}
+            </List>
+          </CommonCard>
         </Box>
       </Box>
     </Box>
