@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { ExitToApp, GridOn, Settings } from '@mui/icons-material'
-import { Avatar, Box, IconButton, Tooltip, useTheme } from '@mui/material'
+import { Box, IconButton, useTheme } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
+import { Icon } from '@iconify/react'
+import { CommonTooltip } from '@/components'
 import { ROUTES, TOKEN } from '@/utils/constant'
 
 const WorkSpaceBar: React.FC = () => {
@@ -20,16 +21,16 @@ const WorkSpaceBar: React.FC = () => {
   }
 
   const organizationIcons = [
-    { icon: <GridOn />, tooltip: 'Workspace 1' },
-    { icon: <GridOn />, tooltip: 'Workspace 2' },
-    { icon: <GridOn />, tooltip: 'Workspace 3' },
-    { icon: <GridOn />, tooltip: 'Workspace 4' }
+    { icon: <Icon icon='ri:function-line' />, tooltip: 'Workspace 1' },
+    { icon: <Icon icon='ri:function-line' />, tooltip: 'Workspace 2' },
+    { icon: <Icon icon='ri:function-line' />, tooltip: 'Workspace 3' },
+    { icon: <Icon icon='ri:function-line' />, tooltip: 'Workspace 4' }
   ]
 
   const bottomIcons = [
-    { icon: <Settings sx={{ width: 22, height: 22 }} onClick={handleSettings} />, tooltip: 'Settings' },
-    { icon: <Avatar sx={{ width: 22, height: 22, fontSize: '0.75rem' }}>C</Avatar>, tooltip: 'Profile' },
-    { icon: <ExitToApp onClick={handleLogout} />, tooltip: 'Logout' }
+    { icon: <Icon icon='ri:settings-3-line' fontSize={18} onClick={handleSettings} />, tooltip: 'Settings' },
+    { icon: <Icon icon='ri:account-circle-line' fontSize={18} />, tooltip: 'Profile' },
+    { icon: <Icon icon='ri:shut-down-line' fontSize={16} onClick={handleLogout} />, tooltip: 'Logout' }
   ]
 
   return (
@@ -68,13 +69,13 @@ const WorkSpaceBar: React.FC = () => {
         {organizationIcons.map((item, index) => {
           const isActive = index === activeWorkspace
           return (
-            <Tooltip key={index} title={item.tooltip} placement='right'>
+            <CommonTooltip key={index} title={item.tooltip} placement='right'>
               <IconButton
                 size='small'
                 onClick={() => setActiveWorkspace(index)}
                 sx={{
-                  width: 36,
-                  height: 36,
+                  width: 32,
+                  height: 32,
                   borderRadius: 2,
                   color: isActive ? theme.palette.primary.main : theme.palette.text.secondary,
                   backgroundColor: isActive ? alpha(theme.palette.primary.main, 0.12) : 'transparent',
@@ -91,7 +92,7 @@ const WorkSpaceBar: React.FC = () => {
               >
                 {item.icon}
               </IconButton>
-            </Tooltip>
+            </CommonTooltip>
           )
         })}
       </Box>
@@ -108,12 +109,12 @@ const WorkSpaceBar: React.FC = () => {
         }}
       >
         {bottomIcons.map((item, index) => (
-          <Tooltip key={index} title={item.tooltip} placement='right'>
+          <CommonTooltip key={index} title={item.tooltip} placement='right'>
             <IconButton
               size='small'
               sx={{
-                width: 36,
-                height: 36,
+                width: 32,
+                height: 32,
                 borderRadius: 2,
                 color: theme.palette.text.secondary,
                 mx: 'auto',
@@ -129,7 +130,7 @@ const WorkSpaceBar: React.FC = () => {
             >
               {item.icon}
             </IconButton>
-          </Tooltip>
+          </CommonTooltip>
         ))}
       </Box>
     </Box>

@@ -117,7 +117,7 @@ const Dashboard: FC = () => {
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
           {/* Revenue Card */}
           <CommonCard title='Revenue Overview'>
-            <Box sx={{ height: 236, backgroundColor: theme.palette.grey[100], borderRadius: 1 }}>
+            <Box sx={{ height: 247, backgroundColor: theme.palette.grey[100], borderRadius: 1 }}>
               <Box display='flex' justifyContent='center' alignItems='center' height='100%'>
                 <Typography color='textSecondary'>Revenue chart will be displayed here</Typography>
               </Box>

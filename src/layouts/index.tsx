@@ -1,26 +1,27 @@
 import { type ReactNode, useState } from 'react'
-import MenuIcon from '@mui/icons-material/Menu'
-import { Tooltip } from '@mui/material'
-import MuiAppBar, { type AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Collapse from '@mui/material/Collapse'
-import MuiDrawer from '@mui/material/Drawer'
-import IconButton from '@mui/material/IconButton'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
+import type { AppBarProps as MuiAppBarProps } from '@mui/material'
+import {
+  Box,
+  Collapse,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  AppBar as MuiAppBar,
+  Drawer as MuiDrawer,
+  Toolbar,
+  Typography
+} from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
 import { Link, useLocation } from 'react-router-dom'
 import { Icon } from '@iconify/react'
-import { FormattedDate, ThemeToggleButton } from '@/components'
+import { useTranslation } from 'react-i18next'
+import { CommonTooltip, FormattedDate, ThemeToggleButton } from '@/components'
 import { menuItems } from '@/layouts/updatedMenu'
 import WorkSpaceBar from '@/layouts/workspace-bar'
 import { convertDateToTimestamp } from '@/utils/dateFunctions'
-import { useTranslation } from 'react-i18next'
 
 const drawerWidth = 250
 
@@ -161,7 +162,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <IconButton color='inherit' aria-label='open drawer' onClick={handleToggle} edge='start'>
-              <MenuIcon sx={{ fontSize: 20 }} />
+              <Icon icon='ri:menu-line' fontSize={20} />
             </IconButton>
             <Typography variant='h6' noWrap component='div'>
               MUI Components
@@ -170,11 +171,11 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <ThemeToggleButton />
-            <Tooltip title='Notifications'>
+            <CommonTooltip title='Notifications'>
               <IconButton color='inherit'>
                 <Icon icon='ri:notification-3-line' fontSize={20} />
               </IconButton>
-            </Tooltip>
+            </CommonTooltip>
           </Box>
         </Toolbar>
       </AppBar>

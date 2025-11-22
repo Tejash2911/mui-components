@@ -18,6 +18,7 @@ import {
 import PageHeader from './page-header'
 import DataTable from './table'
 import ThemeToggleButton from './theme/ThemeToggleButton'
+import CommonTooltip from './tooltip'
 import TreeView from './tree-view'
 
 export {
@@ -25,6 +26,7 @@ export {
   CommonCard,
   ThemeToggleButton,
   CommonButton,
+  CommonTooltip,
   TreeView,
   DataTable,
   PageHeader,

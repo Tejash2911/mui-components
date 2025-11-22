@@ -151,7 +151,7 @@ const FormComponents = () => {
           </Box>
         </Stack>
       </Box>
-      <CommonCard>
+      <CommonCard sx={{ mt: 2 }}>
         <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
           {JSON.stringify(watch(), null, 2)}
         </pre>

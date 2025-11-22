@@ -1,8 +1,7 @@
-import { Add } from '@mui/icons-material'
-import { Box, Chip, IconButton, Tooltip } from '@mui/material'
+import { Box, Chip, IconButton } from '@mui/material'
 import type { ColumnDef } from '@tanstack/react-table'
 import { Icon } from '@iconify/react'
-import { DataTable, PageHeader } from '@/components'
+import { CommonTooltip, DataTable, PageHeader } from '@/components'
 import { ROUTES } from '@/utils/constant'
 
 type User = {
@@ -88,21 +87,21 @@ const demoColumns: ColumnDef<User>[] = [
     cell: ({ row }) => {
       return (
         <div className='flex items-center gap-0.5'>
-          <Tooltip title='View'>
+          <CommonTooltip title='View'>
             <IconButton size='small' color='info' onClick={() => console.log(row.getValue('name'))}>
               <Icon icon='ri:eye-line' />
             </IconButton>
-          </Tooltip>
-          <Tooltip title='Edit'>
+          </CommonTooltip>
+          <CommonTooltip title='Edit'>
             <IconButton size='small' color='warning' onClick={() => console.log(row.getValue('name'))}>
               <Icon icon='ri:edit-box-line' />
             </IconButton>
-          </Tooltip>
-          <Tooltip title='Delete'>
+          </CommonTooltip>
+          <CommonTooltip title='Delete'>
             <IconButton size='small' color='error' onClick={() => console.log(row.getValue('name'))}>
               <Icon icon='ri:delete-bin-7-line' />
             </IconButton>
-          </Tooltip>
+          </CommonTooltip>
         </div>
       )
     }
@@ -134,7 +133,7 @@ export default function DemoTable() {
             label: 'Add User',
             variant: 'contained',
             color: 'primary',
-            startIcon: <Add />,
+            startIcon: <Icon icon='ri:add-line' />,
             onClick: handleAddUser,
             loading: false
           }
